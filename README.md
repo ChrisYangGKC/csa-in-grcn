@@ -9,20 +9,20 @@
 * [pre-requisite 前提要求](#pre-requisite-前提要求)
 * [Screenshots](#screenshots)
 * [Setup 配置步骤](#setup-配置步骤)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
+* [Use Cases 安全使用场景配置 ](#use-cases-安全使用场景配置 )
+
 
 
 ## Background Information 背景
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+
+Google Cloud Security Action Team (GCAT) 发布了Community Security Analytics (CSA) [项目] (https://cloud.google.com/blog/products/identity-security/introducing-community-security-analytics)，旨在支撑Google Cloud用户充分利用GCP云日志，在BigQuery或者Chronicle平台之上，实现6个领域40多个安全监控和审计的应用场景。
+
+本项目的目标是聚焦BigQuery平台上的自动化实现，可以帮助大家更好地部署和使用CSA项目中的use cases。对于GCP用户来说，BigQuery在这些场景对应的安全运维、威胁管理、风险管理等方面有如下优势：
+- 默认在多个国家过个领域已经完成合规，且有非常完善的细粒度数据访问管控、加密以及数据泄漏保护（DLP）检查等方面的安全能力
+- 云原生平台。性能和扩展性很好，99.99%的uptime SLA，与其他的云原生服务无缝集成，且同时支持流式及批处理式的数据导入。
+- 快速实现价值。云原生托管服务不需要花费时间、人手和精力去维护数据平台，SQL语法受众比较多，学习成本不高。
+- 总拥有成本比较低。由于云原生计算存储分离，可以按需进行消费及横向扩展
+- 一次数据导入，还可以支撑多种其他的应用场景。
 
 
 ## Major GCP configurations 主要的GCP基础设施配置
@@ -58,9 +58,6 @@
 这个GCS Bucket的信息需要配置在[backend.tf](https://github.com/ChrisYangGKC/csa-in-grcn/blob/master/backend.tf)当中。
 
 
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
 
 
 ## Setup 配置步骤
@@ -140,43 +137,21 @@ BigQuery当中的数据集可以立刻建好，取决于对应环境中的服务
 如果要预估打开的log的收费情况，可以访问[这里]（https://cloud.google.com/stackdriver/estimating-bills#logs-resource-usage）
 
 
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+## Use Cases 安全使用场景配置 
 
-`write-your-code-here`
+配置[Google Cloud Communicaty Security Analytics](https://github.com/GoogleCloudPlatform/security-analytics)
 
-
-## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
+该项目的代码中包括6个领域，42个use case。目前主要的领域包括
+- 账号登陆行为的监控和审计
+- IAM, 密钥以及凭据等的变更的监控和审计
+- 云资源的变更监控和审计
+- 云服务API的使用监控和审计
+- 数据访问的监控和审计
+- 网络流量或者服务的监控和审计
 
 
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
 
 
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
 
 <!-- You don't have to include all sections - just the one's relevant to your project -->
 
