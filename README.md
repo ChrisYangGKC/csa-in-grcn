@@ -48,12 +48,15 @@ List the ready features here:
 ### 第一步，下载代码，并准备好匹配当前环境的Terraform配置参数
 
 首先在命令行中，下载代码到部署环境中
+
 `git clone https://github.com/ChrisYangGKC/csa-in-grcn.git`
 
 然后进入到代码目录中
+
 `cd csa-in-grcn`
 
 之后把配置参数文件`terraform.tfvars`准备好
+
 `cp ./terraform.tfvars.backup ./terraform.tfvars`
 
 terraform.tfvars中的主要的配置参数如下
@@ -73,11 +76,48 @@ terraform.tfvars中的主要的配置参数如下
 | owner_prod_dataset  | BigQuery中生产环境dataset的Owner权限用户或者用户组 |
 | owner_test_dataset  | BigQuery中测试或者开发环境dataset的Owner权限用户或者用户组 |
 
+在这当中，organization层面的日志为单独收集
+`prod_folder`和`test_folder`的配置中，既包含了其folder层面的日志，还包括了该folder所包含的所有子folder和projects的日志。所以，如果需要收集日志的project全部包含在当前folder中的话，`prod_projects`和`test_projects`这两个部分不是必须的。
+
 ### 第二步，部署相关的GCP云资源和配置
+
+初始化Terraform
+
+`terraform init`
+
+然后预览需要做出的所有的GCP基础设施变更
+
+`terraform plan`
+
+一切没有问题的话，可以进行部署
+
+`terraform apply --auto-approve`
 
 ### 第三步，确认配置正确
 
+如果上述第二步（#第二步，部署相关的GCP云资源和配置）运行正确，可以首先在对应的Org，folder，project层面的logging sink配置（console->`logging`->`logging router`）是否存在
 
+也需要在收容日志的BigQuery dataset的权限列表里确认对应的服务账号是否配置正确。根据实际配置情况，可能会有下列三种类型的服务账号
+
+| 类型  | 说明 |
+| ------------- | ------------- |
+| oxxxxxxxxxxxx-xxxxxx@gcp-sa-logging.iam.gserviceaccount.com | Organization层面的logging服务账号的identity |
+| fxxxxxxxxxxxx-xxxxxx@gcp-sa-logging.iam.gserviceaccount.com | 已配置的folder层面的logging服务账号的identity |
+| pxxxxxxxxxxxx-xxxxxx@gcp-sa-logging.iam.gserviceaccount.com | 已配置的project层面的logging服务账号的identity |
+
+BigQuery当中的数据集可以立刻建好，取决于对应环境中的服务活跃程度，可能需要等一些时间看到数据集中的BigQuery数据表（Table），以下是一些典型的自动生成的数据表
+
+| 名称  | 说明 |
+| ------------- | ------------- |
+| cloudaudit_googleapis_com_activity | 所有的admin activity审计日志（默认打开，免费） |
+| cloudaudit_googleapis_com_data_access | 所有的data access审计日志（只有BigQuery数据集data access审计日志默认打开且免费，其他默认关闭，如果打开需要收费） |
+| compute_googleapis_com_firewall | 所有的VPC防火墙策略日志（默认关闭，如果打开需要收费） |
+| compute_googleapis_com_nat_flows | 所有的NAT日志（默认关闭，如果打开需要收费） |
+| compute_googleapis_com_vpc_flows | 所有的VPC flow日志 （默认关闭，如果打开需要收费）|
+| ids_googleapis_com_threat | 所有的Cloud IDS检测到的威胁告警日志（如果使用付费的Cloud IDS的话，默认打开）  |
+| requests | 所有的Global Load Balancer的访问日志（默认关闭，如果打开需要收费）  |
+
+如果要预估打开的log的收费情况，可以访问[这里]（https://cloud.google.com/stackdriver/estimating-bills#logs-resource-usage）
 
 
 ## Usage
