@@ -1,0 +1,68 @@
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//org id for the org level sink definition usage. 
+org_id = "org_id_all_number_here_"
+
+
+
+terraform_service_account = "your-service-account@yourproject.iam.gserviceaccount.com"
+
+default_region = "us-central1"
+
+
+
+// Optional - for an organization with existing projects or for development/validation.
+// Must be the same value used in step 0-bootstrap.
+parent_folder  = "#########"
+
+//folders nominated in CSA demo
+prod_folder    = "#########"
+test_folder    = "#########"
+
+//logging project id to host the bigquery datasets for security log analytics
+log_project_id = "id_of_your_logging_project"
+
+//Single project nominated in the security analytics
+prod_project = "can_feed_single_project_id"
+
+//Product list nominated in security analytics
+prod_projects = [
+   "prod_project_id_1",
+   "prod_project_id_2"
+]
+
+/* //Single project nominated in the security analytics
+test_project = "can_feed_single_project_id"
+
+//Product list nominated in security analytics
+prod_projects = [
+   "test_project_id_1",
+   "test_project_id_1"
+] */
+
+/* the BigQuery dataset names for prod and test/dev environments */
+prod_dataset = "data_set_in_logging_project_for_csa_prod"
+test_dataset = "data_set_in_logging_project_for_csa_test"
+
+/* the principles or groups defined as the owner or viewers for the Bigquery datasets above */
+//billing_data_users   = "gcp-billing-admins@chrisypeng.altostrat.com"
+viewer_prod_dataset  = "your-audit-data-users@yourdomain.com"
+viewer_test_dataset  = "your-developers@yourdomain.com"
+owner_prod_dataset   = "your-owner@yourdomain.com"
+owner_test_dataset   = "your-owner@yourdomain.com"
+
+
