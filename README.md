@@ -4,7 +4,7 @@
 > 本项目包含GCP上的Terraform实现及相关脚本，为了让用户方便地体验到到[Google Cloud Communicaty Security Analytics](https://github.com/GoogleCloudPlatform/security-analytics) 使用场景在BigQuery上的实现和价值
 
 ## Table of Contents
-* [General Info](#general-information)
+* [General Info](#background-information-背景)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
