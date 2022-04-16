@@ -45,13 +45,30 @@ List the ready features here:
 
 ## Setup 配置步骤
 
+### 第一步，下载代码，并准备好匹配当前环境的Terraform配置参数
 
 terraform.tfvars中的主要的配置参数如下
 | 名称  | 说明 |
 | ------------- | ------------- |
 | org_id  | GCP中当前环境中的Organization ID  |
-| terraform_service_account  | 运行Terraform的服务账号  |
-Proceed to describe how to install / setup one's local environment / get started with the project.
+| prod_folder  | 需要采集日志的生产环境的folder ID  |
+| test_folder  | 需要采集日志的测试或者开发环境的folder ID  |
+| log_project_id  | 收集日志指向的BigQuery数据集所在的GCP project ID  |
+| prod_projects  | 需要采集日志的生产环境的project ID列表 |
+| test_projects  | 需要采集日志的测试或者开发环境的project ID列表  |
+| prod_dataset  | BigQuery中收容的生产环境日志的dataset  |
+| test_dataset  | BigQuery中收容的测试或者开发环境日志的dataset  |
+| viewer_prod_dataset  | BigQuery中生产环境dataset的viewer权限用户或者用户组 |
+| viewer_test_dataset  | BigQuery中测试或者开发环境dataset的viewer权限用户或者用户组 |
+| test_dataset  | BigQuery中收容的测试或者开发环境日志的dataset  |
+| owner_prod_dataset  | BigQuery中生产环境dataset的Owner权限用户或者用户组 |
+| owner_test_dataset  | BigQuery中测试或者开发环境dataset的Owner权限用户或者用户组 |
+
+### 第二步，部署相关的GCP云资源和配置
+
+### 第三步，确认配置正确
+
+
 
 
 ## Usage
