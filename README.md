@@ -4,11 +4,11 @@
 > 本项目包含GCP上的Terraform实现及相关脚本，为了让用户方便地体验到到[Google Cloud Communicaty Security Analytics](https://github.com/GoogleCloudPlatform/security-analytics) 使用场景在BigQuery上的实现和价值
 
 ## Table of Contents
-* [General Info](#background-information-背景)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
+* [Background Information 背景](#background-information-背景)
+* [Major GCP configurations 主要的GCP基础设施配置](#Major-GCP-configurations-主要的GCP基础设施配置)
+* [pre-requisite 前提要求](#pre-requisite-前提要求)
 * [Screenshots](#screenshots)
-* [Setup](#setup)
+* [Setup 配置步骤](#setup-配置步骤)
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
@@ -25,13 +25,13 @@
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
-## Technologies Used
+## Major GCP configurations 主要的GCP基础设施配置
 - Tech 1 - version 1.0
 - Tech 2 - version 2.0
 - Tech 3 - version 3.0
 
 
-## Features
+## pre-requisite 前提要求
 List the ready features here:
 - Awesome feature 1
 - Awesome feature 2
@@ -43,7 +43,7 @@ List the ready features here:
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
-## Setup
+## Setup 配置步骤
 What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
 Proceed to describe how to install / setup one's local environment / get started with the project.
