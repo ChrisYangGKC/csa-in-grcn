@@ -26,16 +26,36 @@
 
 
 ## Major GCP configurations 主要的GCP基础设施配置
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+将Org，Folder或者Project层面的日志转发到BigQuery dataset的[文档](https://cloud.google.com/logging/docs/export/aggregated_sinks)
+
+- 生成对应的BigQuery Datasets
+- 在对应的层面配置log sink，将日志转发目的地指向上面的BigQuery Datasets
+- 在BigQuery Datasets上，绑定对应的logging服务账号的BigQuery Data Editor角色（roles/bigquery.dataEditor）
+
+
 
 
 ## pre-requisite 前提要求
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+
+### 建立或者指配一个用于Terraform部署的服务账号（建议可以在CI/CD的project中，也可以在收容日子的BigQuery数据集所在的Project中）
+对于要收集日子的Org，Folder，Project层面，授予该服务账号日志配置写入权限 (roles/logging.configWriter) 。[文档](https://cloud.google.com/logging/docs/access-control)
+- 在收容日子的BigQuery数据集所在的Project中，授予该服务账号BigQuery数据编辑权限(roles/bigquery.dataEditor) ，这样部署过程中，该服务账号可以支持Terraform去建立和编辑对应的数据集（dataset）
+
+### 当前命令行所在运行环境中的账号可以有借用（impersonate）上述服务账号的权限。
+在本项目中，使用[借用（impersonate）服务账号的模式运行Terraform](https://cloud.google.com/blog/topics/developers-practitioners/using-google-cloud-service-account-impersonation-your-terraform-code)，这样不用下载使用带私钥的服务账号凭据，可以避免一些风险。当前命令行所在运行环境中的账号需要有借用（impersonate）上述服务账号的权限如下
+- Service Account User (roles/iam.serviceAccountUser)
+- Service Account Token Creator (roles/iam.serviceAccountTokenCreator)
+
+如果是使用Cloud build部署本项目中的配置，需要对应的Cloud Build服务账号有借用（impersonate）上述服务账号的权限。
+
+### 一个GCS Bucket用来存放[Terraform状态信息](https://cloud.google.com/docs/terraform/resource-management/store-state). 上述的服务账号需要有该bucket以下权限.
+- storage.buckets.create
+- storage.buckets.list
+- storage.objects.get
+- storage.objects.create
+- storage.objects.delete
+- storage.objects.update
+这个GCS Bucket的信息需要配置在[backend.tf](https://github.com/ChrisYangGKC/csa-in-grcn/blob/master/backend.tf)当中。
 
 
 ## Screenshots
