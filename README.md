@@ -44,8 +44,13 @@ List the ready features here:
 
 
 ## Setup 配置步骤
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
+
+terraform.tfvars中的主要的配置参数如下
+| 名称  | 说明 |
+| ------------- | ------------- |
+| org_id  | GCP中当前环境中的Organization ID  |
+| terraform_service_account  | 运行Terraform的服务账号  |
 Proceed to describe how to install / setup one's local environment / get started with the project.
 
 
