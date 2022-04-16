@@ -47,6 +47,15 @@ List the ready features here:
 
 ### 第一步，下载代码，并准备好匹配当前环境的Terraform配置参数
 
+首先在命令行中，下载代码到部署环境中
+`git clone https://github.com/ChrisYangGKC/csa-in-grcn.git`
+
+然后进入到代码目录中
+`cd csa-in-grcn`
+
+之后把配置参数文件`terraform.tfvars`准备好
+`cp ./terraform.tfvars.backup ./terraform.tfvars`
+
 terraform.tfvars中的主要的配置参数如下
 | 名称  | 说明 |
 | ------------- | ------------- |
