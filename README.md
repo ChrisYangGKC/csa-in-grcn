@@ -12,7 +12,7 @@
 
 
 ## Background Information 背景
-
+--------------------------
 Google Cloud Security Action Team (GCAT) 发布了Community Security Analytics (CSA) [项目] (https://cloud.google.com/blog/products/identity-security/introducing-community-security-analytics)，旨在支撑Google Cloud用户充分利用GCP云日志，在BigQuery或者Chronicle平台之上，实现6个领域40多个安全监控和审计的应用场景。
 
 本项目的目标是聚焦BigQuery平台上的自动化实现，可以帮助大家更好地部署和使用CSA项目中的use cases。对于GCP用户来说，BigQuery在这些场景对应的安全运维、威胁管理、风险管理等方面有如下优势：
@@ -34,7 +34,7 @@ Google Cloud Security Action Team (GCAT) 发布了Community Security Analytics (
 
 
 ## pre-requisite 前提要求
-
+--------------------------
 ### 建立或者指配一个用于Terraform部署的服务账号（建议可以在CI/CD的project中，也可以在收容日子的BigQuery数据集所在的Project中）
 对于要收集日子的Org，Folder，Project层面，授予该服务账号日志配置写入权限 (roles/logging.configWriter) 。[文档](https://cloud.google.com/logging/docs/access-control)
 - 在收容日子的BigQuery数据集所在的Project中，授予该服务账号BigQuery数据编辑权限(roles/bigquery.dataEditor) ，这样部署过程中，该服务账号可以支持Terraform去建立和编辑对应的数据集（dataset）
@@ -59,6 +59,7 @@ Google Cloud Security Action Team (GCAT) 发布了Community Security Analytics (
 
 
 ## Setup 配置步骤
+--------------------------
 
 ### 第一步，下载代码，并准备好匹配当前环境的Terraform配置参数
 
@@ -136,7 +137,7 @@ BigQuery当中的数据集可以立刻建好，取决于对应环境中的服务
 
 
 ## Use Cases 安全使用场景配置 
-
+--------------------------
 配置[Google Cloud Communicaty Security Analytics](https://github.com/GoogleCloudPlatform/security-analytics)
 
 该项目的代码中包括6个领域，42个use case。目前主要的领域包括
