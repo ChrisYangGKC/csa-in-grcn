@@ -15,8 +15,7 @@
  */
 
 locals {
-//  tf_sa = var.terraform_service_account
-    tf_sa = "project-service-account@prj-b-cicd-8a94.iam.gserviceaccount.com"
+    tf_sa = var.terraform_service_account
 }
 
 provider "google" {
