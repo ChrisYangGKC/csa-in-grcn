@@ -133,7 +133,7 @@ BigQuery当中的数据集可以立刻建好，取决于对应环境中的服务
 | ids_googleapis_com_threat | 所有的Cloud IDS检测到的威胁告警日志（如果使用付费的Cloud IDS的话，默认打开）  |
 | requests | 所有的Global Load Balancer的访问日志（默认关闭，如果打开需要收费）  |
 
-如果要预估打开的log的收费情况，可以访问[这里]（https://cloud.google.com/stackdriver/estimating-bills#logs-resource-usage）
+如果要预估打开的log的收费情况，可以访问[这里](https://cloud.google.com/stackdriver/estimating-bills#logs-resource-usage)
 
 
 ## Use Cases 安全使用场景配置 
